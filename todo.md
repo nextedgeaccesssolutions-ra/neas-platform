@@ -32,13 +32,13 @@
 - [x] Align the CMS visual editor with the copied public design language
 - [x] Re-test responsive behavior and save an updated checkpoint after the reference-copy work
 
-- [ ] Add smooth scrolling and accessible section entrance effects to the homepage
-- [ ] Add responsive hover and focus animations to homepage interactive cards and CTAs
-- [ ] Replace the public and CMS logo mark with the supplied NEASPNG1.1.png asset
-- [ ] Add secure AI-assisted service-description drafting to the CMS editor
-- [ ] Add CMS-backed Recent Projects model and public gallery rendering
-- [ ] Add staff controls for creating, editing, publishing, and hiding Recent Projects
-- [ ] Test the new AI assistant, project gallery, logo asset, interactions, and responsive states
+- [x] Add smooth scrolling and accessible section entrance effects to the homepage
+- [x] Add responsive hover and focus animations to homepage interactive cards and CTAs
+- [x] Replace the public and CMS logo mark with the supplied NEASPNG1.1.png asset
+- [x] Add secure AI-assisted service-description drafting to the CMS editor
+- [x] Add CMS-backed Recent Projects model and public gallery rendering
+- [x] Add staff controls for creating, editing, publishing, and hiding Recent Projects
+- [x] Test the new AI assistant, project gallery, logo asset, interactions, and responsive states
 
 - [x] Review official NEAS resources content and media for reuse permissions and accuracy
 - [x] Review the provided 2026 NEAS company profile PDF and extract verified company data
@@ -46,3 +46,5 @@
 - [x] Add a verified resources/recent-projects presentation to the public homepage
 - [x] Link the Online Store section and CTAs to the provided NEAS store and booking page
 - [x] Verify external links, media references, responsive presentation, and tests after the update
+
+- [x] Verify and preserve the direct Online Store quote link from the published NEAS homepage

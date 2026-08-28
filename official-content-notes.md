@@ -17,3 +17,7 @@ Verified profile details include the stated vision to become an industry standar
 
 ## Media handling
 The official resources page references imagery such as `/assets/images/services/rope-access-detail.png` and `/logo/neas-logo.jpg`. The user supplied an updated NEAS logo separately. External imagery should only be copied when rights/permission are clear; otherwise use the supplied logo and branded CSS treatments rather than downloading third-party images.
+
+## Published-link verification
+
+The published homepage at https://neascontent-bhnm8kjp.manus.space/#store visibly contains the “Open Store & Booking” CTA in the Online Store section. The target destination was previously opened and verified at https://neas-store-booking.nextedge-acc-6333.chatgpt.site/#quote, where the quote cart, service booking, and quotation request flows are present. A direct click attempt from the published page required a DOM refresh because the browser snapshot was stale; no site defect was established.
