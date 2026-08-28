@@ -14,4 +14,6 @@ export const navigationItems = mysqlTable("navigationItems", { id: int("id").aut
 
 export const formSubmissions = mysqlTable("formSubmissions", { id: int("id").autoincrement().primaryKey(), formName: varchar("formName", { length: 120 }).notNull(), payload: text("payload").notNull(), status: mysqlEnum("status", ["new", "reviewed", "archived"]).default("new").notNull(), createdAt: timestamp("createdAt").defaultNow().notNull(), });
 
+export const recentProjects = mysqlTable("recentProjects", { id: int("id").autoincrement().primaryKey(), title: varchar("title", { length: 180 }).notNull(), location: varchar("location", { length: 160 }).notNull(), service: varchar("service", { length: 120 }).notNull(), summary: text("summary").notNull(), imageUrl: text("imageUrl"), displayOrder: int("displayOrder").default(0).notNull(), isPublished: boolean("isPublished").default(false).notNull(), updatedBy: int("updatedBy"), createdAt: timestamp("createdAt").defaultNow().notNull(), updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(), }, (table) => ({ publishedIdx: index("recent_projects_published_idx").on(table.isPublished), }));
+
 export type User = typeof users.$inferSelect; export type InsertUser = typeof users.$inferInsert; export type Page = typeof pages.$inferSelect; export type Revision = typeof revisions.$inferSelect;
