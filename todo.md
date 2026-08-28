@@ -29,5 +29,5 @@
 
 - [x] Inspect the provided reference URL and document its visual structure and interaction patterns
 - [x] Copy the approved reference layout and styling into the NEAS public site
-- [ ] Align the CMS visual editor with the copied public design language
-- [ ] Re-test responsive behavior and save an updated checkpoint after the reference-copy work
+- [x] Align the CMS visual editor with the copied public design language
+- [x] Re-test responsive behavior and save an updated checkpoint after the reference-copy work
