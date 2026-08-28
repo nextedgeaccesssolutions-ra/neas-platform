@@ -1,28 +1,17 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, index } from "drizzle-orm/mysql-core";
 
-/**
- * Core user table backing auth flow.
- * Extend this file with additional tables as your product grows.
- * Columns use camelCase to match both database fields and generated types.
- */
-export const users = mysqlTable("users", {
-  /**
-   * Surrogate primary key. Auto-incremented numeric value managed by the database.
-   * Use this for relations between tables.
-   */
-  id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
-  openId: varchar("openId", { length: 64 }).notNull().unique(),
-  name: text("name"),
-  email: varchar("email", { length: 320 }),
-  loginMethod: varchar("loginMethod", { length: 64 }),
-  role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
-});
+export const users = mysqlTable("users", { id: int("id").autoincrement().primaryKey(), openId: varchar("openId", { length: 64 }).notNull().unique(), name: text("name"), email: varchar("email", { length: 320 }), loginMethod: varchar("loginMethod", { length: 64 }), role: mysqlEnum("role", ["user", "editor", "reviewer", "publisher", "admin"]).default("user").notNull(), createdAt: timestamp("createdAt").defaultNow().notNull(), updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(), lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(), });
 
-export type User = typeof users.$inferSelect;
-export type InsertUser = typeof users.$inferInsert;
+export const pages = mysqlTable("pages", { id: int("id").autoincrement().primaryKey(), title: varchar("title", { length: 255 }).notNull(), slug: varchar("slug", { length: 255 }).notNull().unique(), status: mysqlEnum("status", ["draft", "pending_review", "approved", "scheduled", "published", "archived"]).default("draft").notNull(), layout: text("layout").notNull(), seo: text("seo").notNull(), featuredImageUrl: text("featuredImageUrl"), scheduledAt: timestamp("scheduledAt"), publishedAt: timestamp("publishedAt"), version: int("version").default(1).notNull(), updatedBy: int("updatedBy"), createdAt: timestamp("createdAt").defaultNow().notNull(), updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(), }, (table) => ({ statusIdx: index("pages_status_idx").on(table.status), }));
 
-// TODO: Add your tables here
+export const revisions = mysqlTable("revisions", { id: int("id").autoincrement().primaryKey(), pageId: int("pageId").notNull(), authorId: int("authorId").notNull(), summary: varchar("summary", { length: 500 }).notNull(), previousContent: text("previousContent"), updatedContent: text("updatedContent").notNull(), status: mysqlEnum("status", ["draft", "pending_review", "approved", "scheduled", "published", "rejected", "archived"]).default("draft").notNull(), reviewComment: text("reviewComment"), createdAt: timestamp("createdAt").defaultNow().notNull(), });
+
+export const mediaAssets = mysqlTable("mediaAssets", { id: int("id").autoincrement().primaryKey(), filename: varchar("filename", { length: 255 }).notNull(), mimeType: varchar("mimeType", { length: 100 }).notNull(), url: text("url").notNull(), storageKey: text("storageKey").notNull(), altText: varchar("altText", { length: 255 }), uploadedBy: int("uploadedBy").notNull(), createdAt: timestamp("createdAt").defaultNow().notNull(), });
+
+export const globalSections = mysqlTable("globalSections", { id: int("id").autoincrement().primaryKey(), name: varchar("name", { length: 120 }).notNull().unique(), content: text("content").notNull(), status: mysqlEnum("status", ["draft", "published"]).default("draft").notNull(), updatedBy: int("updatedBy"), updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(), });
+
+export const navigationItems = mysqlTable("navigationItems", { id: int("id").autoincrement().primaryKey(), label: varchar("label", { length: 120 }).notNull(), href: varchar("href", { length: 255 }).notNull(), displayOrder: int("displayOrder").default(0).notNull(), isVisible: boolean("isVisible").default(true).notNull(), });
+
+export const formSubmissions = mysqlTable("formSubmissions", { id: int("id").autoincrement().primaryKey(), formName: varchar("formName", { length: 120 }).notNull(), payload: text("payload").notNull(), status: mysqlEnum("status", ["new", "reviewed", "archived"]).default("new").notNull(), createdAt: timestamp("createdAt").defaultNow().notNull(), });
+
+export type User = typeof users.$inferSelect; export type InsertUser = typeof users.$inferInsert; export type Page = typeof pages.$inferSelect; export type Revision = typeof revisions.$inferSelect;

@@ -1,33 +1,39 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+import { Link } from "wouter";
+import { ArrowUpRight, Check, ChevronRight, Globe2, Leaf, Menu, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { useState } from "react";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
+const services = [
+  { no: "01", title: "Advisory & assurance", text: "Practical guidance that helps teams make confident, responsible decisions." },
+  { no: "02", title: "Learning programmes", text: "Clear, applied courses that turn ambition into capability across your organisation." },
+  { no: "03", title: "Projects & partnerships", text: "Collaborative programmes designed for measurable progress and lasting value." },
+];
+
+function ContactForm() { const [sent, setSent] = useState(false); if (sent) return <div className="rounded-2xl bg-white p-8 shadow-lift"><div className="grid h-10 w-10 place-items-center rounded-full bg-[#d5e8df] text-[#0a5960]"><Check size={20}/></div><h3 className="serif mt-5 text-2xl">Thank you — we’ve received your note.</h3><p className="mt-2 text-sm text-[#66807c]">Our team will review it and get back to you shortly.</p></div>; return <form onSubmit={(e)=>{e.preventDefault();setSent(true)}} className="grid gap-4 rounded-2xl bg-white p-6 shadow-lift md:grid-cols-2 md:p-8"><label className="text-sm font-semibold text-[#466563]">Name<input required className="mt-2 w-full rounded-lg border border-[#dce6e1] px-3 py-3 font-normal outline-none focus:border-[#6db28d]" /></label><label className="text-sm font-semibold text-[#466563]">Work email<input required type="email" className="mt-2 w-full rounded-lg border border-[#dce6e1] px-3 py-3 font-normal outline-none focus:border-[#6db28d]" /></label><label className="text-sm font-semibold text-[#466563] md:col-span-2">How can we help?<textarea required rows={4} className="mt-2 w-full resize-none rounded-lg border border-[#dce6e1] px-3 py-3 font-normal outline-none focus:border-[#6db28d]" /></label><button className="inline-flex h-12 items-center justify-center gap-3 rounded-full bg-[#113f43] px-6 font-semibold text-white transition-transform active:scale-[.97] md:col-span-2 md:justify-self-start">Send enquiry <ArrowUpRight size={18}/></button></form>; }
+
 export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const [open, setOpen] = useState(false);
+  return <div className="min-h-screen bg-[#f6f8f6] text-[#173b3f]">
+    <header className="absolute inset-x-0 top-0 z-20 border-b border-white/15 bg-[#113f43]/85 text-white backdrop-blur-md">
+      <div className="container flex h-20 items-center justify-between">
+        <Link href="/" className="flex items-center gap-3" aria-label="NEAS home"><span className="grid h-10 w-10 place-items-center rounded-full border border-[#a8d2bd] text-[#cfe7dc]"><Leaf size={19}/></span><span className="text-xl font-semibold tracking-[.12em]">NEAS</span></Link>
+        <button className="rounded-md p-2 md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu"><Menu/></button>
+        <nav className={`${open ? "absolute left-0 right-0 top-20 block bg-[#113f43] p-5" : "hidden"} md:static md:block`} aria-label="Primary navigation"><div className="flex flex-col gap-5 text-sm md:flex-row md:items-center md:gap-8"><a href="#about">About</a><a href="#services">What we do</a><a href="#approach">Our approach</a><a href="#contact">Contact</a><Link href="/admin" className="rounded-full border border-[#b7d6c5] px-4 py-2 text-[#e8f4ec]">Staff portal</Link></div></nav>
+      </div>
+    </header>
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+    <main>
+      <section className="hero-glow grid-paper relative overflow-hidden bg-[#113f43] pb-24 pt-40 text-white md:pb-32 md:pt-52"><div className="container relative grid items-end gap-14 md:grid-cols-[1.08fr_.92fr]"><div className="reveal"><p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.24em] text-[#b8dbc6]"><span className="h-px w-10 bg-[#b8dbc6]"/> Northstar for better systems</p><h1 className="serif max-w-3xl text-5xl leading-[.98] tracking-[-.035em] md:text-7xl">Making progress <em className="font-normal text-[#acd7bf]">practical.</em></h1><p className="mt-7 max-w-xl text-lg leading-8 text-[#d4e5dc]">NEAS helps organisations build the clarity, capability and confidence to move forward — with purpose.</p><div className="mt-10 flex flex-wrap gap-4"><a href="#contact" className="inline-flex h-12 items-center gap-3 rounded-full bg-[#d9eadf] px-6 font-semibold text-[#113f43] transition-transform active:scale-[.97]">Start a conversation <ArrowUpRight size={18}/></a><a href="#services" className="inline-flex h-12 items-center gap-2 rounded-full border border-[#719b8a] px-6 font-semibold text-[#eff9f1]">Explore our work</a></div></div><div className="relative mx-auto w-full max-w-md reveal"><div className="aspect-[.9] rounded-[13rem_13rem_1rem_1rem] border border-[#77a493]/60 bg-gradient-to-br from-[#2d6965] via-[#1b5556] to-[#0c3035] p-5 shadow-2xl"><div className="flex h-full flex-col justify-between rounded-[11rem_11rem_.6rem_.6rem] border border-white/10 bg-[#174c50]/50 p-7"><div className="flex justify-between text-[11px] uppercase tracking-[.2em] text-[#badac7]"><span>NEAS / 01</span><Globe2 size={16}/></div><div><p className="serif text-4xl leading-none text-[#e1f2e6]">Ideas into<br/><i>impact.</i></p><div className="mt-7 h-px bg-[#8ab4a0]/40"/><p className="mt-4 text-sm leading-6 text-[#c9dfd3]">A considered approach to complex change.</p></div></div></div><div className="absolute -bottom-5 -left-5 rounded-xl bg-[#e7bd78] p-4 text-[#173b3f] shadow-lg"><Sparkles size={21}/></div></div></div></section>
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+      <section id="about" className="container grid gap-12 py-24 md:grid-cols-[.75fr_1.25fr] md:py-32"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-[#9b6e33]">A better way forward</p><h2 className="serif mt-5 text-4xl leading-tight md:text-5xl">Good work starts with <i>good questions.</i></h2></div><div className="max-w-2xl"><p className="text-xl leading-9 text-[#466563]">We partner with people who are building something that matters. Our work blends strategic thinking with hands-on support, so your next step is both ambitious and achievable.</p><div className="mt-10 grid gap-5 sm:grid-cols-3"><div className="border-t-2 border-[#acd7bf] pt-4"><p className="text-3xl font-semibold">12+</p><p className="mt-1 text-sm text-[#66807c]">years of practice</p></div><div className="border-t-2 border-[#acd7bf] pt-4"><p className="text-3xl font-semibold">40</p><p className="mt-1 text-sm text-[#66807c]">active partnerships</p></div><div className="border-t-2 border-[#acd7bf] pt-4"><p className="text-3xl font-semibold">1</p><p className="mt-1 text-sm text-[#66807c]">shared direction</p></div></div></div></section>
+
+      <section id="services" className="bg-[#e8f1ee] py-24 md:py-28"><div className="container"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-[#9b6e33]">What we do</p><h2 className="serif mt-4 text-4xl md:text-5xl">Built for the <i>real world.</i></h2></div><p className="max-w-sm text-sm leading-6 text-[#5d7773]">From first principles to final delivery, we make complex things easier to understand and easier to act on.</p></div><div className="mt-14 grid gap-5 md:grid-cols-3">{services.map((s) => <article key={s.no} className="group rounded-2xl bg-white p-7 shadow-lift transition-transform hover:-translate-y-1"><div className="flex items-center justify-between text-sm text-[#9b6e33]"><span>{s.no}</span><ArrowUpRight size={17} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div><h3 className="serif mt-20 text-2xl">{s.title}</h3><p className="mt-4 text-sm leading-6 text-[#66807c]">{s.text}</p><a href="#contact" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#0a5960]">Learn more <ChevronRight size={16}/></a></article>)}</div></div></section>
+
+      <section id="approach" className="container grid gap-12 py-24 md:grid-cols-2 md:py-32"><div className="rounded-2xl bg-[#113f43] p-8 text-white md:p-12"><p className="text-xs font-bold uppercase tracking-[.22em] text-[#b8dbc6]">Our approach</p><h2 className="serif mt-5 text-4xl leading-tight">Clear thinking.<br/><i>Human delivery.</i></h2><ul className="mt-10 space-y-5 text-sm text-[#d4e5dc]">{["Listen before we prescribe", "Make the complex feel workable", "Leave teams stronger than we found them"].map(x=><li key={x} className="flex items-center gap-3"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#8fc7a9] text-[#113f43]"><Check size={14}/></span>{x}</li>)}</ul></div><div className="flex flex-col justify-center"><p className="text-2xl leading-9 text-[#466563]">“The best work is not the loudest. It is the work that gives people a clearer path and the confidence to take it.”</p><p className="mt-6 text-sm font-semibold uppercase tracking-[.16em] text-[#9b6e33]">The NEAS principle</p></div></section>
+
+      <section id="contact" className="bg-[#d5e8df] py-20"><div className="container grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-[#9b6e33]">Let’s talk</p><h2 className="serif mt-4 text-4xl md:text-5xl">Ready for a clearer<br/><i>next step?</i></h2><p className="mt-5 max-w-sm text-sm leading-6 text-[#466563]">Tell us a little about what you are working through. A member of the NEAS team will be in touch.</p></div><ContactForm/></div></section>
+    </main>
+
+    <footer className="bg-[#0c3035] py-10 text-[#cfe7dc]"><div className="container flex flex-col gap-5 text-sm md:flex-row md:items-center md:justify-between"><div className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-full border border-[#719b8a]"><Leaf size={15}/></span><span className="font-semibold tracking-[.15em]">NEAS</span></div><div className="flex gap-6"><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a></div><p className="text-[#8eb3a1]">© 2026 NEAS. Built for better systems.</p></div></footer>
+  </div>;
 }

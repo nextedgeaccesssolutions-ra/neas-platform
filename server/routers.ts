@@ -1,28 +1,21 @@
+import { z } from "zod";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
+import { createSubmission, getDb, listGlobalSections, listNavigation, listPages, listPublishedPages, listRevisions, listSubmissions } from "./db";
+import { pages, revisions, formSubmissions } from "../drizzle/schema";
+import { eq } from "drizzle-orm";
 
-export const appRouter = router({
-    // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
-  system: systemRouter,
-  auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return {
-        success: true,
-      } as const;
-    }),
-  }),
+const blockSchema = z.object({ id: z.string(), type: z.string().min(1), content: z.record(z.string(), z.unknown()), style: z.record(z.string(), z.unknown()).optional(), order: z.number().int().nonnegative(), visible: z.boolean().default(true), responsive: z.record(z.string(), z.unknown()).optional() });
+const layoutSchema = z.array(blockSchema).max(80);
+const seoSchema = z.object({ title: z.string().max(70), description: z.string().max(160), slug: z.string().regex(/^[a-z0-9-]+$/), canonical: z.string().optional(), noIndex: z.boolean().default(false) });
+const editorProcedure = protectedProcedure.use(({ ctx, next }) => { if (!["editor","reviewer","publisher","admin"].includes(ctx.user.role)) throw new Error("Editor permission required"); return next(); });
+const reviewerProcedure = protectedProcedure.use(({ ctx, next }) => { if (!["reviewer","publisher","admin"].includes(ctx.user.role)) throw new Error("Review permission required"); return next(); });
+const publisherProcedure = protectedProcedure.use(({ ctx, next }) => { if (!["publisher","admin"].includes(ctx.user.role)) throw new Error("Publishing permission required"); return next(); });
 
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+export const appRouter = router({ system: systemRouter, auth: router({ me: publicProcedure.query(o=>o.ctx.user), logout: publicProcedure.mutation(({ctx})=>{ctx.res.clearCookie(COOKIE_NAME,{...getSessionCookieOptions(ctx.req),maxAge:-1});return {success:true} as const;}) }),
+  publicSite: router({ pages: publicProcedure.query(()=>listPublishedPages()), navigation: publicProcedure.query(()=>listNavigation()), globals: publicProcedure.query(()=>listGlobalSections()), submitContact: publicProcedure.input(z.object({ formName:z.string().min(1).max(120), payload:z.record(z.string(),z.unknown()) })).mutation(({input})=>createSubmission(input.formName,JSON.stringify(input.payload)).then(()=>({success:true}))) }),
+  cms: router({ pages: protectedProcedure.query(()=>listPages()), revisions: editorProcedure.input(z.object({pageId:z.number()})).query(({input})=>listRevisions(input.pageId)), submissions: protectedProcedure.query(()=>listSubmissions()), saveDraft: editorProcedure.input(z.object({id:z.number().optional(),title:z.string().min(1).max(255),slug:z.string().regex(/^[a-z0-9-]+$/),layout:layoutSchema,seo:seoSchema,summary:z.string().min(1).max(500)})).mutation(async({ctx,input})=>{const db=await getDb();if(!db)throw new Error("Database unavailable");const data={title:input.title,slug:input.slug,layout:JSON.stringify(input.layout),seo:JSON.stringify(input.seo),status:"draft" as const,updatedBy:ctx.user.id};if(input.id){const current=(await db.select().from(pages).where(eq(pages.id,input.id)).limit(1))[0];await db.update(pages).set(data).where(eq(pages.id,input.id));await db.insert(revisions).values({pageId:input.id,authorId:ctx.user.id,summary:input.summary,previousContent:current?.layout??null,updatedContent:data.layout,status:"draft"});return {id:input.id};}const result=await db.insert(pages).values(data);return {id:Number(result[0].insertId)};}), submitForReview: reviewerProcedure.input(z.object({pageId:z.number(),comment:z.string().optional()})).mutation(async({input})=>{const db=await getDb();if(!db)throw new Error("Database unavailable");await db.update(pages).set({status:"pending_review"}).where(eq(pages.id,input.pageId));return {success:true};}), approve: reviewerProcedure.input(z.object({pageId:z.number(),comment:z.string().optional()})).mutation(async({input})=>{const db=await getDb();if(!db)throw new Error("Database unavailable");await db.update(pages).set({status:"approved"}).where(eq(pages.id,input.pageId));return {success:true};}), publish: publisherProcedure.input(z.object({pageId:z.number(),scheduledAt:z.date().optional()})).mutation(async({input})=>{const db=await getDb();if(!db)throw new Error("Database unavailable");await db.update(pages).set({status:input.scheduledAt?"scheduled":"published",scheduledAt:input.scheduledAt??null,publishedAt:input.scheduledAt?null:new Date()}).where(eq(pages.id,input.pageId));return {success:true};}), rollback: publisherProcedure.input(z.object({pageId:z.number(),revisionId:z.number()})).mutation(async({input})=>{const db=await getDb();if(!db)throw new Error("Database unavailable");const revision=(await db.select().from(revisions).where(eq(revisions.id,input.revisionId)).limit(1))[0];if(!revision)throw new Error("Revision not found");await db.update(pages).set({layout:revision.updatedContent,status:"draft"}).where(eq(pages.id,input.pageId));return {success:true};}) })
 });
-
 export type AppRouter = typeof appRouter;
