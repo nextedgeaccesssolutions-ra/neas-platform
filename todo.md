@@ -26,3 +26,8 @@
 
 - Initial requested scope: complete public NEAS website plus secure no-code CMS.
 - User refinement: responsive and accessible public site; staff-only CMS; separate editing, approval, and publishing permissions; scheduled publication; media library; SEO/navigation/global content controls; contact-submission review; elegant visual direction.
+
+- [x] Inspect the provided reference URL and document its visual structure and interaction patterns
+- [x] Copy the approved reference layout and styling into the NEAS public site
+- [ ] Align the CMS visual editor with the copied public design language
+- [ ] Re-test responsive behavior and save an updated checkpoint after the reference-copy work
