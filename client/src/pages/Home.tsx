@@ -198,7 +198,7 @@ export default function Home() {
           <Link href="/" className="flex items-center gap-3"><img src="/manus-storage/NEASPNG1.1_22de2ec7.png" alt="NextEdge Access Solutions logo" className="h-12 w-12 rounded-full object-cover" /><span className="text-sm font-bold tracking-[.12em]">NEXTEDGE<br /><span className="text-[10px] font-normal tracking-[.22em] text-[#667b80]">ACCESS SOLUTIONS</span></span></Link>
           <button className="rounded p-2 md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}><Menu /></button>
           <nav className={`${open ? "absolute left-0 right-0 top-[76px] border-b border-[#dce7e4] bg-white p-5" : "hidden"} md:static md:block`} aria-label="Main navigation">
-            <div className="flex flex-col gap-4 text-sm font-medium md:flex-row md:items-center md:gap-5">{navigation.map((item) => item.label.toLowerCase() === "about us" ? <TeamDropdown key={item.id} /> : <a key={item.id} href={item.href}>{item.label}</a>)}<a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-md bg-[#b6ef3c] px-4 py-2 font-semibold">Request a Quote <ArrowUpRight size={15} /></a></div>
+            <div className="flex flex-col gap-4 text-sm font-medium md:flex-row md:items-center md:gap-5">{navigation.map((item) => item.label.toLowerCase() === "about us" ? <TeamDropdown key={item.id} /> : <a key={item.id} href={item.href}>{item.label}</a>)}<a href="https://neas-store-booking.vercel.app/#quote" className="inline-flex items-center justify-center gap-2 rounded-md bg-[#b6ef3c] px-4 py-2 font-semibold">Request a Quote <ArrowUpRight size={15} /></a></div>
           </nav>
         </div>
       </header>
