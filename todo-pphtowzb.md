@@ -1,13 +1,13 @@
 # Project TODO
 
-- [ ] Test GitHub connector access through the authenticated GitHub integration
-- [ ] Fetch representative GitHub repository data and preserve the observed result for the demonstration
-- [ ] Build an in-app GitHub connector capability brief and usage example
-- [ ] Display fetched GitHub data with loading, error, and empty states
-- [ ] Add or update Vitest coverage for the GitHub demonstration data and UI-facing contract
-- [ ] Run type checks, tests, and a production build
-- [ ] Verify the rendered page at desktop and mobile widths
-- [ ] Save a checkpoint with all completed items marked as [x]
+- [x] Test GitHub connector access through the authenticated GitHub integration
+- [x] Fetch representative GitHub repository data and preserve the observed result for the demonstration
+- [x] Build an in-app GitHub connector capability brief and usage example
+- [x] Display fetched GitHub data with loading, error, and empty states
+- [x] Add or update Vitest coverage for the GitHub demonstration data and UI-facing contract
+- [x] Run type checks, tests, and a production build
+- [x] Verify the rendered page at desktop and mobile widths
+- [x] Save a checkpoint with all completed items marked as [x]
 
 ## History
 
