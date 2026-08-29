@@ -21,3 +21,13 @@ The official resources page references imagery such as `/assets/images/services/
 ## Published-link verification
 
 The published homepage at https://neascontent-bhnm8kjp.manus.space/#store visibly contains the “Open Store & Booking” CTA in the Online Store section. The target destination was previously opened and verified at https://neas-store-booking.nextedge-acc-6333.chatgpt.site/#quote, where the quote cart, service booking, and quotation request flows are present. A direct click attempt from the published page required a DOM refresh because the browser snapshot was stale; no site defect was established.
+
+## Official services page
+Source: https://www.nextedge-access-solutions.com/services/
+
+The official service portfolio lists Residential, Commercial, Construction, Industrial, Telecom, Met Mast Tower, PPE Supplies, and Training & Consultancy. Published descriptions cover residential cleaning and maintenance; commercial façade, window, leak-detection, resealing, and painting work; construction rigging, lifeline systems, structural additions, and high-risk support; industrial confined-space, power-plant, tank-cleaning, inspection, and shutdown work; telecom tower climbing, antennas, cables, testing, inspections, and remote installations; Met Mast safety systems, rigging, sensor checks, structural analysis, and alignment; PPE and fall-protection supply; and work-at-height training, rescue protocols, compliance, risk assessment, and safety audits.
+
+## Equipment preview data
+Source: 2026 NEAS Company Profile, PDF pages 9–12
+
+The profile describes PPE supplies as high-quality equipment intended to support safety, reliability, and compliance for industrial and construction work. It expressly references helmets, harnesses, rope-access equipment and systems. Its product list groups PPE supplies by Rope Access, Wind Energy, Met Mast Tower, Telecommunication Tower, Construction, and Power Plants. The preview carousel may therefore show Full-Body Rope Access Harness, Work-at-Height Safety Helmet, Low-Stretch Access Rope, Rope Access Starter Kit, Lifeline Systems, Anchor Systems, and PPE Inspection support. Product cards must state that specifications, certification, brand, stock, and suitability are confirmed by NEAS before supply; no technical performance values should be invented.

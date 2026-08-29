@@ -16,4 +16,24 @@ describe("cms permission boundaries", () => {
     const caller = appRouter.createCaller(context("reviewer"));
     await expect(caller.cms.publish({ pageId: 1 })).rejects.toThrow("Publishing permission required");
   });
+
+  it("does not allow an editor to approve content", async () => {
+    const caller = appRouter.createCaller(context("editor"));
+    await expect(caller.cms.approve({ pageId: 1 })).rejects.toThrow("Review permission required");
+  });
+
+  it("does not allow a reviewer to publish a project", async () => {
+    const caller = appRouter.createCaller(context("reviewer"));
+    await expect(caller.cms.setProjectPublished({ id: 1, isPublished: true })).rejects.toThrow("Publishing permission required");
+  });
+
+  it("does not allow a publisher to delete navigation records", async () => {
+    const caller = appRouter.createCaller(context("publisher"));
+    await expect(caller.cms.deleteNavigation({ id: 1 })).rejects.toThrow("Administrator permission required");
+  });
+
+  it("does not allow an editor to roll back a global section", async () => {
+    const caller = appRouter.createCaller(context("editor"));
+    await expect(caller.cms.rollbackGlobal({ globalSectionId: 1, revisionId: 1 })).rejects.toThrow("Publishing permission required");
+  });
 });

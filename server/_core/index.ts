@@ -9,6 +9,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { publishScheduledPage } from "../scheduled";
+import { allowStoreRequestPreflight, receiveStoreRequest } from "../storeRequests";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -46,6 +47,8 @@ async function startServer() {
     })
   );
   app.post("/api/scheduled/publish-page", publishScheduledPage);
+  app.options("/api/public/store-request", allowStoreRequestPreflight);
+  app.post("/api/public/store-request", receiveStoreRequest);
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);

@@ -6,9 +6,11 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import StoreBooking from "./pages/StoreBooking";
+import CmsPage from "./pages/CmsPage";
 
 function Router() {
-  return <Switch><Route path="/" component={Home}/><Route path="/admin" component={Admin}/><Route path="/404" component={NotFound}/><Route component={NotFound}/></Switch>;
+  return <Switch><Route path="/" component={Home}/><Route path="/store" component={StoreBooking}/><Route path="/store-booking" component={StoreBooking}/><Route path="/admin" component={Admin}/><Route path="/page/:slug" component={CmsPage}/><Route path="/404" component={NotFound}/><Route component={NotFound}/></Switch>;
 }
 
 export default function App() {
