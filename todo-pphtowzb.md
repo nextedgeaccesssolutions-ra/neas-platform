@@ -15,3 +15,13 @@
 - [x] Verify and checkpoint the user-applied Request a Quote link update to https://neas-store-booking.vercel.app/#quote
 - [x] Verify and checkpoint the user-applied wordmark update to "ACCESS SOLUTIONS."
 - [x] Verify and checkpoint the homepage hero service-label and layout update, preserving the requested labels and removing invalid opacity styling
+- [ ] Verify and checkpoint the contact-bar update, preserving readable Mob and Email labels and removing malformed line-break or inline-style artifacts
+- [ ] Fix phone/email contact links and confirm the quote website destination is https://neas-store-booking.vercel.app/#quote
+- [ ] Verify and checkpoint the footer brand-name update to "NextEdge Access Solutions."
+- [ ] Fix homepage SEO metadata with 3–8 keywords, a 30–60 character title, and a 50–160 character description
+- [ ] Add a custom accessible in-website notification for quote form success and error feedback
+- [ ] Verify homepage SEO metadata has 3–8 keywords, a 30–60 character title, and a 50–160 character description
+- [x] Fix and verify every homepage website or quote connection points to https://neas-store-booking.vercel.app/#quote
+- [x] Verify and checkpoint the footer logo size update while removing unintended 50px sizing from surrounding footer elements
+- [x] Verify and checkpoint the hero icon-size update while removing unintended 54px and 63px sizing from surrounding hero elements
+- [x] Repair duplicate JSX style attributes and verify all homepage quote/website connections use https://neas-store-booking.vercel.app/#quote
