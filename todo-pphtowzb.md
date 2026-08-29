@@ -13,3 +13,4 @@
 
 - Initial scope captured for the attached project.
 - [x] Verify and checkpoint the user-applied Request a Quote link update to https://neas-store-booking.vercel.app/#quote
+- [x] Verify and checkpoint the user-applied wordmark update to "ACCESS SOLUTIONS."
