@@ -13,6 +13,8 @@ import {
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { homepageSeo } from "@/data/homeSeo";
+import { SiteNotification } from "@/components/SiteNotification";
+import { quoteNotificationCopy } from "@/components/siteNotificationCopy";
 
 const STORE_URL = "https://neas-store-booking.vercel.app/#quote";
 
@@ -76,44 +78,53 @@ const resources = [
 
 function QuoteForm() {
   const [sent, setSent] = useState(false);
-  const submit = trpc.publicSite.submitContact.useMutation({ onSuccess: () => setSent(true) });
-
-  if (sent) {
-    return (
-      <div className="rounded-2xl bg-white p-8 text-[#132b34]">
-        <div className="grid h-11 w-11 place-items-center rounded-full bg-[#b6ef3c]"><Check size={21} /></div>
-        <h3 className="mt-5 text-2xl font-semibold">Enquiry received.</h3>
-        <p className="mt-2 text-sm text-[#577078]">The NEAS team will review your project details and contact you shortly.</p>
-      </div>
-    );
-  }
+  const [notification, setNotification] = useState<{ tone: "success" | "error"; title: string; message: string } | null>(null);
+  const submit = trpc.publicSite.submitContact.useMutation({
+    onSuccess: () => {
+      setSent(true);
+      setNotification(quoteNotificationCopy.success);
+    },
+    onError: () => {
+      setNotification(quoteNotificationCopy.error);
+    },
+  });
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        const form = new FormData(event.currentTarget);
-        submit.mutate({
-          formName: "homepage_quote",
-          payload: {
-            name: String(form.get("name") || ""),
-            company: String(form.get("company") || ""),
-            email: String(form.get("email") || ""),
-            service: String(form.get("service") || ""),
-            details: String(form.get("details") || ""),
-          },
-        });
-      }}
-      className="grid gap-4 rounded-2xl bg-white p-6 text-[#132b34] md:grid-cols-2 md:p-8"
-    >
-      <label className="text-sm font-semibold">Name<input name="name" required placeholder="Your full name" className="mt-2 w-full rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
-      <label className="text-sm font-semibold">Company<input name="company" required placeholder="Company name" className="mt-2 w-full rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
-      <label className="text-sm font-semibold">Email<input name="email" required type="email" placeholder="name@company.com" className="mt-2 w-full rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
-      <label className="text-sm font-semibold">Service<select name="service" className="mt-2 w-full rounded-md border border-[#dce7e4] bg-white px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30"><option>Rope Access Services</option><option>Wind Turbine Services</option><option>Commercial Services</option><option>Training & Courses</option><option>PPE & Equipment</option></select></label>
-      <label className="text-sm font-semibold md:col-span-2">Project details<textarea name="details" required rows={4} placeholder="Location, scope and preferred schedule" className="mt-2 w-full resize-none rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
-      {submit.error && <p role="alert" className="text-sm text-red-700 md:col-span-2">The enquiry could not be sent. Please try again.</p>}
-      <button disabled={submit.isPending} className="inline-flex h-12 items-center justify-center gap-3 rounded-md bg-[#b6ef3c] px-6 font-semibold text-[#132b34] transition-transform active:scale-[.97] disabled:opacity-60 md:col-span-2 md:justify-self-start">{submit.isPending ? "Sending…" : "Send enquiry"}<ArrowUpRight size={18} /></button>
-    </form>
+    <>
+      {notification && <SiteNotification {...notification} onDismiss={() => setNotification(null)} />}
+      {sent ? (
+        <div className="rounded-2xl bg-white p-8 text-[#132b34]">
+          <div className="grid h-11 w-11 place-items-center rounded-full bg-[#b6ef3c]"><Check size={21} /></div>
+          <h3 className="mt-5 text-2xl font-semibold">Enquiry received.</h3>
+          <p className="mt-2 text-sm text-[#577078]">The NEAS team will review your project details and contact you shortly.</p>
+        </div>
+      ) : (
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            const form = new FormData(event.currentTarget);
+            submit.mutate({
+              formName: "homepage_quote",
+              payload: {
+                name: String(form.get("name") || ""),
+                company: String(form.get("company") || ""),
+                email: String(form.get("email") || ""),
+                service: String(form.get("service") || ""),
+                details: String(form.get("details") || ""),
+              },
+            });
+          }}
+          className="grid gap-4 rounded-2xl bg-white p-6 text-[#132b34] md:grid-cols-2 md:p-8"
+        >
+          <label className="text-sm font-semibold">Name<input name="name" required placeholder="Your full name" className="mt-2 w-full rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
+          <label className="text-sm font-semibold">Company<input name="company" required placeholder="Company name" className="mt-2 w-full rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
+          <label className="text-sm font-semibold">Email<input name="email" required type="email" placeholder="name@company.com" className="mt-2 w-full rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
+          <label className="text-sm font-semibold">Service<select name="service" className="mt-2 w-full rounded-md border border-[#dce7e4] bg-white px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30"><option>Rope Access Services</option><option>Wind Turbine Services</option><option>Commercial Services</option><option>Training & Courses</option><option>PPE & Equipment</option></select></label>
+          <label className="text-sm font-semibold md:col-span-2">Project details<textarea name="details" required rows={4} placeholder="Location, scope and preferred schedule" className="mt-2 w-full resize-none rounded-md border border-[#dce7e4] px-3 py-3 font-normal outline-none focus:border-[#78ad32] focus:ring-2 focus:ring-[#b6ef3c]/30" /></label>
+          <button disabled={submit.isPending} className="inline-flex h-12 items-center justify-center gap-3 rounded-md bg-[#b6ef3c] px-6 font-semibold text-[#132b34] transition-transform active:scale-[.97] disabled:opacity-60 md:col-span-2 md:justify-self-start">{submit.isPending ? "Sending…" : "Send enquiry"}<ArrowUpRight size={18} /></button>
+        </form>
+      )}
+    </>
   );
 }
 
