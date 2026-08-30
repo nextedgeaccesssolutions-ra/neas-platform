@@ -14,13 +14,13 @@
 - [x] Implement revision history, comparison, rollback, and audit trail
 - [x] Implement media library with reusable images and documents
 - [x] Implement page SEO controls and administrator-friendly validation warnings
-- [ ] Implement global section impact preview and durable rollback safeguards
+- [x] Implement global section impact preview and durable rollback safeguards
 - [x] Implement controlled contact form builder and public submission inbox
 - [x] Add admin dashboard, onboarding, help text, validation, confirmations, and unsaved-change warnings
 - [x] Add administrator user guide
 - [x] Add Vitest coverage for permissions, publishing workflow, validation, revision safety, and public content propagation
 - [x] Run typecheck, tests, accessibility checks, and visual verification
-- [ ] Save final checkpoint and deliver project version
+- [x] Save final checkpoint and deliver project version
 
 ## Change History
 
@@ -60,22 +60,28 @@
 - [x] Complete real CMS-to-public data binding for pages, navigation, global sections, projects, media, and submissions
 - [x] Create a separate NEAS store-and-booking website modeled on the supplied reference experience
 - [x] Connect the main website Online Store section to the new separate store-and-booking website and link back to the main site
-- [ ] Verify the `/admin` portal changes published content on the live public website
+- [x] Verify the `/admin` portal changes published content on the live public website
 - [x] Prepare Vercel deployment for the requested NextEdge account, subject to external-host compatibility and account authorization
 - [x] Prepare Namecheap DNS connection for `nextedge-access-solutions.com`, subject to account authorization and explicit confirmation before DNS changes
 - [x] Add `/store` route alias and verify main, store, and admin surfaces at desktop and mobile widths
 - [x] Preserve Namecheap webmail, MX, SPF, DKIM, DMARC, and verification records during the confirmed web-host migration
-- [ ] Add durable global-section revision history and server-side rollback procedures
-- [ ] Verify global-section revisions and rollback through the CMS UI and API
-- [ ] Document a safe end-to-end admin edit, publish, live-site observation, and rollback check
-- [ ] Fix the failing automatic Vercel production build blocker for the main `neas` project
-- [ ] Publish the latest verified local NEAS bundle as the active main Vercel production deployment
-- [ ] Attach `nextedge-access-solutions.com` and `www.nextedge-access-solutions.com` to the corrected main deployment
-- [ ] Preserve `store.nextedge-access-solutions.com` and all Namecheap email-related DNS records
-- [ ] Verify homepage, `/admin`, CMS API, store subdomain, HTTPS certificates, and DNS after the production repair
+- [x] Add durable global-section revision history and server-side rollback procedures
+- [x] Verify global-section revisions and rollback through the CMS UI and API
+- [x] Document a safe end-to-end admin edit, publish, live-site observation, and rollback check
+- [x] Fix the failing automatic Vercel production build blocker for the main `neas` project
+- [x] Publish the latest verified local NEAS bundle as the active main Vercel production deployment
+- [x] Attach `nextedge-access-solutions.com` and `www.nextedge-access-solutions.com` to the corrected main deployment
+- [x] Preserve `store.nextedge-access-solutions.com` and all Namecheap email-related DNS records
+- [x] Verify homepage, `/admin`, CMS API, store subdomain, HTTPS certificates, and DNS after the production repair
 - [x] Test the configured GitHub connection and capture safe repository metadata as a usage example
 - [x] Document the GitHub connection’s supported repository, issue, pull-request, workflow, and release capabilities
-- [ ] Duplicate the supplied NEAS store-and-booking reference as a new separate online-store website
-- [ ] Connect the new store’s quote, service-booking, equipment, and meeting requests to the NEAS CMS backend
-- [ ] Add direct click-to-call mobile number links and clickable email links throughout the new store
-- [ ] Verify the new store’s forms, backend intake, mobile layout, phone links, and email links
+- [x] Duplicate the supplied NEAS store-and-booking reference as a new separate online-store website
+- [x] Connect the new store’s quote, service-booking, equipment, and meeting requests to the NEAS CMS backend
+- [x] Add direct click-to-call mobile number links and clickable email links throughout the new store
+- [x] Verify the new store’s forms, backend intake, mobile layout, phone links, and email links
+- [x] Perform successful end-to-end service-booking, meeting-request, and equipment-quote submissions and confirm they appear in the CMS inbox
+- [x] Verify deployed click-to-call and email actions on desktop and mobile and record the results
+- [x] Diagnose and repair the custom-domain `/api/oauth/callback` deployment-not-found error
+- [x] Confirm apex and `www` serve the current Manus-backed application and API routes consistently
+- [x] Restore `store.nextedge-access-solutions.com` to the verified standalone online store
+- [x] Re-run secure CMS sign-in and authenticated publication/rollback verification after routing repair
