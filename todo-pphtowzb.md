@@ -25,3 +25,6 @@
 - [x] Verify and checkpoint the footer logo size update while removing unintended 50px sizing from surrounding footer elements
 - [x] Verify and checkpoint the hero icon-size update while removing unintended 54px and 63px sizing from surrounding hero elements
 - [x] Repair duplicate JSX style attributes and verify all homepage quote/website connections use https://neas-store-booking.vercel.app/#quote
+- [x] Inspect the linked Google AI Studio project and compare its reference implementation with the current NEAS website
+- [x] Apply compatible reference improvements without breaking existing NEAS features
+- [x] Verify the updated website and save a checkpoint
