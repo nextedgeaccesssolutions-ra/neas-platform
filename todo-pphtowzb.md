@@ -28,3 +28,7 @@
 - [x] Inspect the linked Google AI Studio project and compare its reference implementation with the current NEAS website
 - [x] Apply compatible reference improvements without breaking existing NEAS features
 - [x] Verify the updated website and save a checkpoint
+- [x] Run final type checks, tests, and production build
+- [x] Verify all homepage quote links use https://neas-store-booking.vercel.app/#quote
+- [x] Verify desktop and mobile homepage renders
+- [x] Save and report the final evidence-backed checkpoint

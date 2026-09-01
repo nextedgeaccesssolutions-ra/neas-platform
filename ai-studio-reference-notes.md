@@ -39,3 +39,7 @@ The AI Studio Export menu exposes a “Download as .zip file — Standard projec
 The compatible adaptation is now implemented in the current project: the homepage hero uses a dark industrial command-style presentation with amber/emerald status cues, capability snapshot cards, direct hotline and quote actions, and the existing NEAS service labels. The current CMS blocks, project filters, quote form, store section, admin portal, and existing routes remain intact.
 
 Desktop verification shows the hero fills the first viewport with readable hierarchy, a balanced two-column layout, and a visible quote CTA. Mobile verification shows the navigation collapsing cleanly, the hero text wrapping without overflow, and quote/call/service actions remaining reachable. No customer reviews, star ratings, or unsupported performance claims were copied from the AI Studio export.
+
+## Final verification evidence
+
+The final production validation completed successfully: TypeScript reported no errors, all 16 Vitest tests passed, and the production build completed. A source audit found the requested booking URL centralized in Home.tsx as `https://neas-store-booking.vercel.app/#quote` with no inconsistent legacy booking URL references. The desktop homepage review showed the dark industrial hero, navigation, capabilities card, quote CTA, and hotline action rendering without visible layout defects. The 390px mobile review showed the collapsed header, readable hero copy, stacked quote/call/service actions, and no horizontal overflow in the first viewport.
