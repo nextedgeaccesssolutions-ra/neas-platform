@@ -17,7 +17,7 @@ import { SiteNotification } from "@/components/SiteNotification";
 import IndustrialReferenceHero from "@/components/IndustrialReferenceHero";
 import { quoteNotificationCopy } from "@/components/siteNotificationCopy";
 
-const STORE_URL = "https://neas-store-booking.vercel.app/#quote";
+const STORE_URL = "https://store.nextedge-access-solutions.com/";
 
 const services = [
   ["01", "Residential", "Rope-access cleaning, building maintenance, deep cleaning, gutter work, plumbing, electrical, and property-care support.", "rope"],
