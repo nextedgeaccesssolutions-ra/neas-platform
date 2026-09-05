@@ -65,3 +65,9 @@ Validation after this correction: TypeScript passed, all 18 Vitest tests passed,
 The capability snapshot now uses the normalized titles Residential & Commercial; Wind, Telecom, Construction & Industrial; Safety-led delivery; and Equipment, Training & Consultancy. Desktop review confirms all titles and grounded descriptions fit the dark hero panel with strong contrast. Mobile review confirms the hero’s primary controls remain usable; the capability panel continues below the fold without introducing visible overflow.
 
 Validation after the taxonomy correction: TypeScript passed, all 18 Vitest tests passed, and the production build completed successfully.
+
+## Supplied emblem logo verification
+
+The supplied NEAS emblem was uploaded as `/manus-storage/neas-access-solutions-emblem_6752f8dc.png` and all client-side logo references were updated from the previous shared asset. Desktop review confirms the new emblem renders in the corporate header/footer and the StoreBooking header at the intended compact size without changing the surrounding navigation or hero layout.
+
+Mobile review confirms the supplied emblem remains crisp and correctly contained in both headers. The corporate menu button and StoreBooking quote-cart control remain usable with no visible header overflow; existing navigation behavior is unchanged.

@@ -42,3 +42,6 @@
 - [x] Verify and checkpoint the hero service-strip labels: Residential & Commercial, Commercial & Construction, Telecom & Wind Energy, and Training & Consultancy
 - [x] Verify and checkpoint the partial capability-label update without malformed line breaks or unsupported taxonomy
 - [x] Normalize capability snapshot titles to the approved service taxonomy: Residential & Commercial; Wind, Telecom, Construction & Industrial; Safety-led delivery; Equipment, Training & Consultancy
+- [x] Inspect https://store.nextedge-access-solutions.com/ and determine whether it is the editable project
+- [x] Replace the website logo with the supplied NEAS emblem where applicable
+- [ ] Verify logo rendering and save a checkpoint if the change belongs to the attached project
