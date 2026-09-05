@@ -44,4 +44,10 @@
 - [x] Normalize capability snapshot titles to the approved service taxonomy: Residential & Commercial; Wind, Telecom, Construction & Industrial; Safety-led delivery; Equipment, Training & Consultancy
 - [x] Inspect https://store.nextedge-access-solutions.com/ and determine whether it is the editable project
 - [x] Replace the website logo with the supplied NEAS emblem where applicable
-- [ ] Verify logo rendering and save a checkpoint if the change belongs to the attached project
+- [x] Verify logo rendering and save a checkpoint if the change belongs to the attached project
+- [x] Create and validate a reusable NEAS logo-branding workflow skill with skill-creator
+- [x] Generate and add a favicon package from the supplied NEAS emblem
+- [x] Generate and add a social preview image using the supplied NEAS emblem
+- [x] Verify logo contrast on dark backgrounds and adjust styling if necessary
+- [x] Run tests, builds, and responsive visual checks for the asset and metadata changes
+- [x] Save and report the final checkpoint and reusable skill artifact

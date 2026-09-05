@@ -71,3 +71,15 @@ Validation after the taxonomy correction: TypeScript passed, all 18 Vitest tests
 The supplied NEAS emblem was uploaded as `/manus-storage/neas-access-solutions-emblem_6752f8dc.png` and all client-side logo references were updated from the previous shared asset. Desktop review confirms the new emblem renders in the corporate header/footer and the StoreBooking header at the intended compact size without changing the surrounding navigation or hero layout.
 
 Mobile review confirms the supplied emblem remains crisp and correctly contained in both headers. The corporate menu button and StoreBooking quote-cart control remain usable with no visible header overflow; existing navigation behavior is unchanged.
+
+## Favicon and social preview review
+
+The generated 1200×630 social preview uses the supplied emblem on a dark navy grid with amber and emerald brand accents. The first preview had a clipped long subtitle; it was corrected to `Rope access · inspection · training · PPE`, and the refreshed image is fully visible with strong logo and text contrast.
+
+The favicon package includes SVG, ICO, Apple touch, 192px, 512px, and manifest assets. The Apple touch icon uses a solid dark background to avoid transparent-icon black-square behavior.
+
+## Dark-surface contrast review
+
+Full-page desktop review confirms the supplied emblem remains distinguishable in the light corporate header, dark corporate hero/footer, light StoreBooking header, navy StoreBooking hero, and dark StoreBooking footer. The existing rounded container treatment and the emblem’s own contrast are sufficient; no pixel-level logo restyling was necessary. The social preview also maintains strong white, amber, and emerald contrast on the dark background.
+
+Mobile full-page review confirms the emblem remains visible in the corporate header/footer and StoreBooking header/footer. The logo containers do not overflow the 390px viewport, and the dark hero/footer backgrounds preserve sufficient separation around the mark. The corporate and store navigation controls remain readable and usable.
