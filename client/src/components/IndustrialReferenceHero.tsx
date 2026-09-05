@@ -4,10 +4,10 @@ const COMPANY_PHONE = "+639914265886";
 const COMPANY_PHONE_DISPLAY = "+63 991 426 5886";
 
 const capabilityItems = [
-  ["Scaffold-free access", "Rope-access methods designed for complex work at height."],
-  ["Wind, telecom & industrial", "Technical support across critical infrastructure and asset types."],
+  ["Residential & Commercial", "Rope-access methods designed for complex work at height."],
+  ["Wind, Telecom, Construction & Industrial", "Technical support across critical infrastructure and asset types."],
   ["Safety-led delivery", "Clear scope, site controls, and dependable project communication."],
-  ["Equipment & training", "PPE supply, work-at-height learning, and safety consultancy."],
+  ["Equipment, Training & Consultancy", "PPE supply, work-at-height learning, and safety consultancy."],
 ] as const;
 
 export default function IndustrialReferenceHero() {
@@ -70,7 +70,7 @@ export default function IndustrialReferenceHero() {
         </div>
       </div>
       <div className="container relative grid grid-cols-2 gap-y-3 border-t border-[#294b53] py-5 text-[10px] font-bold uppercase tracking-[.22em] text-[#91aaad] sm:grid-cols-4">
-        <span>Residential & Commercial</span><span>Commercial &amp; Construction</span><span>Telecom &amp; Wind Energy</span><span>Training & Consultancy</span>
+        <span>Residential &amp; Commercial</span><span>Construction &amp; Industrial</span><span>Telecom &amp; Wind Energy</span><span>Training &amp; Consultancy</span>
       </div>
     </section>
   );

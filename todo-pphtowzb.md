@@ -40,3 +40,5 @@
 - [x] Run type checks, tests, production build, desktop/mobile review, and save a new checkpoint
 - [x] Verify and checkpoint the hero status-row edit while removing the unintended opacity: 2 styling
 - [x] Verify and checkpoint the hero service-strip labels: Residential & Commercial, Commercial & Construction, Telecom & Wind Energy, and Training & Consultancy
+- [x] Verify and checkpoint the partial capability-label update without malformed line breaks or unsupported taxonomy
+- [x] Normalize capability snapshot titles to the approved service taxonomy: Residential & Commercial; Wind, Telecom, Construction & Industrial; Safety-led delivery; Equipment, Training & Consultancy

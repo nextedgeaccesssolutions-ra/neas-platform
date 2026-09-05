@@ -53,3 +53,15 @@ Validation after this refinement: TypeScript passed, 18 Vitest tests passed, and
 ## Hero label copy verification
 
 The service strip now presents Residential & Commercial, Commercial & Construction, Telecom & Wind Energy, and Training & Consultancy. Desktop and mobile captures show the hero remains readable and the label copy does not introduce visible overflow in the reviewed viewport sizes. TypeScript, the 18-test Vitest suite, and the production build passed after the copy update.
+
+## Capability and service-label verification
+
+The hero capability snapshot remains content-backed and unchanged, while the service strip now cleanly reads Residential & Commercial, Construction & Industrial, Telecom & Wind Energy, and Training & Consultancy. Desktop review shows the labels align across the hero footer. Mobile review shows the stacked hero remains readable without visible horizontal overflow; the service strip is below the fold and inherits the same responsive layout rules.
+
+Validation after this correction: TypeScript passed, all 18 Vitest tests passed, and the production build completed successfully.
+
+## Capability snapshot taxonomy verification
+
+The capability snapshot now uses the normalized titles Residential & Commercial; Wind, Telecom, Construction & Industrial; Safety-led delivery; and Equipment, Training & Consultancy. Desktop review confirms all titles and grounded descriptions fit the dark hero panel with strong contrast. Mobile review confirms the hero’s primary controls remain usable; the capability panel continues below the fold without introducing visible overflow.
+
+Validation after the taxonomy correction: TypeScript passed, all 18 Vitest tests passed, and the production build completed successfully.
