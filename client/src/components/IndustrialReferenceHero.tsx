@@ -70,7 +70,7 @@ export default function IndustrialReferenceHero() {
         </div>
       </div>
       <div className="container relative grid grid-cols-2 gap-y-3 border-t border-[#294b53] py-5 text-[10px] font-bold uppercase tracking-[.22em] text-[#91aaad] sm:grid-cols-4">
-        <span>Residential</span><span>Commercial &amp; Construction</span><span>Telecom &amp; Wind Energy</span><span>Industrial</span>
+        <span>Residential & Commercial</span><span>Commercial &amp; Construction</span><span>Telecom &amp; Wind Energy</span><span>Training & Consultancy</span>
       </div>
     </section>
   );

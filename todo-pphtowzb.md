@@ -32,3 +32,11 @@
 - [x] Verify all homepage quote links use https://neas-store-booking.vercel.app/#quote
 - [x] Verify desktop and mobile homepage renders
 - [x] Save and report the final evidence-backed checkpoint
+- [x] Refine the field-focused command header and hero using inspiration-only patterns
+- [x] Add content-backed technical service details without invented certifications or statistics
+- [x] Add industry discovery paths that preserve existing route behavior
+- [x] Improve high-contrast mobile controls without new dependencies
+- [x] Add or update tests for the new UI contracts
+- [x] Run type checks, tests, production build, desktop/mobile review, and save a new checkpoint
+- [x] Verify and checkpoint the hero status-row edit while removing the unintended opacity: 2 styling
+- [x] Verify and checkpoint the hero service-strip labels: Residential & Commercial, Commercial & Construction, Telecom & Wind Energy, and Training & Consultancy

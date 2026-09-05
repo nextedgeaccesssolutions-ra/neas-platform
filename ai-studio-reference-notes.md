@@ -43,3 +43,13 @@ Desktop verification shows the hero fills the first viewport with readable hiera
 ## Final verification evidence
 
 The final production validation completed successfully: TypeScript reported no errors, all 16 Vitest tests passed, and the production build completed. A source audit found the requested booking URL centralized in Home.tsx as `https://neas-store-booking.vercel.app/#quote` with no inconsistent legacy booking URL references. The desktop homepage review showed the dark industrial hero, navigation, capabilities card, quote CTA, and hotline action rendering without visible layout defects. The 390px mobile review showed the collapsed header, readable hero copy, stacked quote/call/service actions, and no horizontal overflow in the first viewport.
+
+## Field-focused refinement verification
+
+The updated homepage keeps the existing NEAS content flow while adding a compact field-operations strip, a higher-contrast industrial hero, technical service signals, and an industry discovery section. Desktop full-page review shows the new sections sit cleanly above the existing about, team, services, projects, training, resources, store, quote, and footer sections. Mobile full-page review shows the hero and industry cards stack correctly, the header remains compact, and the existing CTA/form flow remains reachable without visible horizontal overflow.
+
+Validation after this refinement: TypeScript passed, 18 Vitest tests passed, and the production build completed. No new packages, external integrations, testimonials, certifications, or invented statistics were introduced.
+
+## Hero label copy verification
+
+The service strip now presents Residential & Commercial, Commercial & Construction, Telecom & Wind Energy, and Training & Consultancy. Desktop and mobile captures show the hero remains readable and the label copy does not introduce visible overflow in the reviewed viewport sizes. TypeScript, the 18-test Vitest suite, and the production build passed after the copy update.
