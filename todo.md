@@ -88,3 +88,4 @@
 - [x] Replace all homepage Store and Request a Quote links with https://store.nextedge-access-solutions.com/
 - [x] Verify the custom store-domain links on the live homepage and save a corrected checkpoint after sandbox recovery
 - [ ] Verify the live homepage navigation, Online Store CTA, and floating quote button open the custom store domain after publication
+- [x] Remove John Eric Cagat — Safety Consultant from the Our Team content and verify all public surfaces

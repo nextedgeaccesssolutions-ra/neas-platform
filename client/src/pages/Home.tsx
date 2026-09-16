@@ -35,7 +35,6 @@ const people = [
   ["WC", "William Castaneda", "General Manager"],
   ["JG", "Junrey Granaderos", "Business Development / Sales & Marketing Manager"],
   ["JR", "Julius Romero", "Sales Consultant & HSE Manager"],
-  ["JC", "John Eric Cagat", "Safety Consultant"],
 ] as const;
 
 const equipment = [
