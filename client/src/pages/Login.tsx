@@ -30,6 +30,18 @@ export default function Login() {
     );
   }
 
+  if (user) {
+    return (
+      <main className="grid min-h-screen place-items-center bg-[#071D29] px-6 text-center text-[#F5F1E8]">
+        <section className="w-full max-w-md rounded-2xl border border-[#CA9332]/30 bg-[#0D2B38] p-8 shadow-2xl">
+          <h1 className="text-2xl font-semibold">Staff access is not enabled</h1>
+          <p className="mt-3 text-sm leading-6 text-[#D7E1E2]">Your account is signed in, but it does not have an approved NEAS staff role. Contact your NEAS administrator to request access.</p>
+          <Link href="/" className="mt-7 inline-flex min-h-11 items-center justify-center rounded-lg bg-[#CA9332] px-6 font-semibold text-[#071D29] hover:bg-[#EBC07E]">Return to public website</Link>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="grid min-h-screen place-items-center bg-[#071D29] px-5 py-12 text-[#F5F1E8]">
       <section className="w-full max-w-md rounded-2xl border border-[#CA9332]/30 bg-[#0D2B38] p-7 shadow-2xl sm:p-9">
@@ -50,7 +62,7 @@ export default function Login() {
         </button>
         <div className="mt-6 rounded-lg border border-white/10 bg-[#071D29]/70 p-4 text-sm leading-6 text-[#D7E1E2]">
           <p className="font-semibold text-[#F5F1E8]">Account assistance</p>
-          <p className="mt-1">Password recovery and account activation are managed by the configured identity provider. If you cannot access those options, contact your NEAS administrator.</p>
+          <p className="mt-1">This application does not store passwords or issue activation codes. Use the recovery options provided by the configured identity provider, or contact your NEAS administrator for account activation assistance.</p>
         </div>
         <p className="mt-7 text-center text-xs text-[#9FB2B8]">
           Access is limited to authorized NEAS staff. <Link href="/" className="text-[#EBC07E] underline underline-offset-4 hover:text-white">Return to public website</Link>
