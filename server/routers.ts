@@ -7,7 +7,7 @@ import { createHeartbeatJob } from "./_core/heartbeat";
 import { invokeLLM } from "./_core/llm";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, router } from "./_core/trpc";
 import {
   createSubmission,
   getDb,
@@ -71,14 +71,14 @@ export const appRouter = router({
       .mutation(({ input }) => createSubmission(input.formName, JSON.stringify(input.payload)).then(() => ({ success: true }))),
   }),
   cms: router({
-    pages: protectedProcedure.query(() => listPages()),
+    pages: editorProcedure.query(() => listPages()),
     revisions: editorProcedure.input(z.object({ pageId: z.number() })).query(({ input }) => listRevisions(input.pageId)),
-    submissions: protectedProcedure.query(() => listSubmissions()),
-    projects: protectedProcedure.query(() => listProjects()),
-    navigation: protectedProcedure.query(() => listAllNavigation()),
-    globals: protectedProcedure.query(() => listGlobalSections()),
+    submissions: editorProcedure.query(() => listSubmissions()),
+    projects: editorProcedure.query(() => listProjects()),
+    navigation: editorProcedure.query(() => listAllNavigation()),
+    globals: editorProcedure.query(() => listGlobalSections()),
     globalRevisions: editorProcedure.input(z.object({ globalSectionId: z.number() })).query(({ input }) => listGlobalSectionRevisions(input.globalSectionId)),
-    media: protectedProcedure.query(() => listMediaAssets()),
+    media: editorProcedure.query(() => listMediaAssets()),
 
     saveProject: editorProcedure.input(z.object({
       id: z.number().optional(), title: z.string().min(1).max(180), location: z.string().min(1).max(160),
